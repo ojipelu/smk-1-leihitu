@@ -59,7 +59,7 @@ require_once("koneksi.php");
 #banner{
   background:#FFFFFF;
   width:100%;
-  height:300px;
+  height:350px;
 }
 #judul{
  font-size:27px;
@@ -141,16 +141,16 @@ require_once("koneksi.php");
   <header class="main-header">
       
       <div id="banner">
-          <img src="../sekolah/gambar/smk.jpg" width="100%" height="300" align="left" >
+          <img src="../sekolah/gambar/smk.jpg" width="100%" height="350" align="left" >
           <div id="judul"></div>
             <div id="lokasi"></div>        
       </div>     
 
-    <nav class="navbar navbar-default navbar">
+    <nav class="navbar navbar-primary">
       <div class="container">
         <div class="navbar-header">
           <a href="/" class="navbar-brand">
-            <img src="gambar/logosmk.png" class="logo-brand"> 
+            <img src="gambar/logosmk1.png" class="logo-brand"> 
           </a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
@@ -158,15 +158,15 @@ require_once("koneksi.php");
         </div>
         <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='home'?'class="active"':''; ?>><a href="?h=home">Home</a></li>
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='profil'?'class="active"':''; ?>><a href="?h=profil">Profil</a></li>
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='guru'?'class="active"':''; ?>><a href="?h=guru">Guru</a></li>
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='kegiatan'?'class="active"':''; ?>><a href="?h=kegiatan">Kegiatan</a></li>
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='akademik'?'class="active"':''; ?>><a href="?h=akademik">Akademik</a></li>
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='agenda'?'class="active"':''; ?>><a href="?h=agenda">Agenda</a></li>
-            <li <?php echo isset($_GET['h'])&&$_GET['h']=='kalender'?'class="active"':''; ?>><a href="?h=kalender">Kalender</a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='home'?'class="active"':''; ?>><a href="?h=home"><b>HOME</b></a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='profil'?'class="active"':''; ?>><a href="?h=profil"><b>PROFIL</b></a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='guru'?'class="active"':''; ?>><a href="?h=guru"><b>GURU</b></a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='kegiatan'?'class="active"':''; ?>><a href="?h=kegiatan"><b>KEGIATAN</b></a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='akademik'?'class="active"':''; ?>><a href="?h=akademik"><b>AKADEMIK</b></a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='agenda'?'class="active"':''; ?>><a href="?h=agenda"><b>AGENDA</b></a></li>
+            <li <?php echo isset($_GET['h'])&&$_GET['h']=='kalender'?'class="active"':''; ?>><a href="?h=kalender"><b>KALENDER</b></a></li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-right" role="search">
             <div class="form-group">
               <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
             </div>
@@ -190,34 +190,27 @@ require_once("koneksi.php");
         
         
         <div class="row">
-          
-
-          
-
+       
           <div class="col-md-3">
-            
-            
-            <div class="box box-default">
-              <div class="box-header">
-                <h3 class="box-title">Kegiatan</h3>
-              </div>
-              <div class="box-body">
-                <?php
+         
+              <div class="panel panel-primary">
+                <div class="panel-heading">Kegiatan</div>
+                <div class="panel-body">
+                  <?php
                     $qKegiatan = mysqli_query($con, "select * from kegiatan order by tgl_posting desc");
-                    while($hKegiatan = mysqli_fetch_array($qKegiatan)){
-                    ?>
-                    <a href="?h=kegiatan_detail&id=<?php echo $hKegiatan['id_kegiatan']; ?>">
-                        <div style="background: #e6e4fc;padding: 5px;margin-top: 5px;"><?php echo $hKegiatan['nama_kegiatan']; ?></div>
-                    </a>
-                <?php } ?>
+                      while($hKegiatan = mysqli_fetch_array($qKegiatan)){
+                      ?>
+                      <a href="?h=kegiatan_detail&id=<?php echo $hKegiatan['id_kegiatan']; ?>">
+                          <div style="background: #e6e4fc;padding: 5px;margin-top: 5px;"><?php echo $hKegiatan['nama_kegiatan']; ?></div>
+                      </a>
+                  <?php } ?>
+                </div>
               </div>
-            </div>
+          
 
-            <div class="box box-default">
-              <div class="box-header">
-                <h3 class="box-title">Akademik</h3>
-              </div>
-              <div class="box-body">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Akademik</div>
+              <div class="panel-body">
                 <?php
                   $qAkademik = mysqli_query($con, "select * from akademik order by tgl_posting desc");
                   while($hAkademik = mysqli_fetch_array($qAkademik)){
@@ -229,11 +222,9 @@ require_once("koneksi.php");
               </div>
             </div>
 
-            <div class="box box-default">
-              <div class="box-header">
-                <h3 class="box-title">Agenda</h3>
-              </div>
-              <div class="box-body">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Agenda</div>
+              <div class="panel-body">
                 <?php
                   $qAgenda = mysqli_query($con, "SELECT * FROM agenda ORDER BY tgl_agenda DESC");
                   while($hAgenda = mysqli_fetch_array($qAgenda)){
@@ -268,11 +259,9 @@ require_once("koneksi.php");
           </div>
 
           <div class="col-md-3">
-            <div class="box box-default">
-              <div class="box-header">
-                <h3 class="box-title">Login Siswa</h3>
-              </div>
-              <div class="box-body">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Login Siswa</div>
+              <div class="panel-body">
                 <?php if(!isset($_SESSION['mbr'])): ?>
                 <form method="POST" action="login_cek.php">
                   <div class="form-group">
@@ -284,18 +273,14 @@ require_once("koneksi.php");
                   <button type="submit" class="btn btn-primary btn-sm">Login</button>
                 </form>
                 <?php else: ?>
-                  <div style="background: #e6e4fc;padding: 5px;margin-top: 5px;">
-                    <a href="keluar.php"> Logout</a>
-                  </div>
+                    <a href="keluar.php" class="btn btn-primary btn-block"> Logout</a>
                 <?php endif; ?>
               </div>
             </div>
 
-            <div class="box box-default">
-              <div class="box-header">
-                <h3 class="box-title">Kalender</h3>
-              </div>
-              <div class="box-body">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Kalender</div>
+              <div class="panel-body">
                 <div id="kalender"></div>
               </div>
             </div>
